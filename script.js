@@ -13,136 +13,13 @@ function clearLoggedInUser() {
     sessionStorage.removeItem("avaiaUser");
 }
 
-/* SECTION 2 — WELCOME MESSAGE (Home page) */
+/* SECTION 1 — WELCOME MESSAGE (Home page) */
 
 function initHomePage() {
     const welcomeTarget = document.getElementById("welcome-message");
     if (!welcomeTarget) return; // not on the home page, do nothing
 
-    const user = getLoggedInUser();
-    if (user) {
-        showWelcomeBanner(user);
-    } else {
-        showAuthModal();
-    }
-}
-
-function showWelcomeBanner(name) {
-    const welcomeTarget = document.getElementById("welcome-message");
-    if (!welcomeTarget) return;
-    welcomeTarget.innerHTML = `
-        <div class="welcome-banner">
-            <p>✨ Welcome back, <strong>${name}</strong>! We're glad you're here.</p>
-            <button onclick="handleLogout()" class="btn-logout">Log Out</button>
-        </div>`;
-}
-
-function handleLogout() {
-    clearLoggedInUser();
-    location.reload();
-}
-
-
-/* SECTION 3 — AUTH MODAL (Sign Up / Log In) */
-
-function showAuthModal() {
-    // Build the modal HTML and inject into <body>
-    const modal = document.createElement("div");
-    modal.id = "auth-modal";
-    modal.className = "modal-overlay";
-    modal.innerHTML = `
-        <div class="modal-box">
-            <h2>Welcome to Avaia Jewels ✨</h2>
-            <p>Please sign up or log in to continue.</p>
-
-            <!-- Toggle between Sign Up and Log In -->
-            <div class="auth-tabs">
-                <button id="tab-signup" class="tab-btn active" onclick="switchTab('signup')">Sign Up</button>
-                <button id="tab-login" class="tab-btn" onclick="switchTab('login')">Log In</button>
-            </div>
-
-            <!-- Sign Up Panel -->
-            <div id="panel-signup" class="auth-panel">
-                <label for="signup-name">Full Name</label>
-                <input type="text" id="signup-name" placeholder="e.g. Amara Wanjiku" />
-                <label for="signup-email">Email Address</label>
-                <input type="email" id="signup-email" placeholder="you@example.com" />
-                <label for="signup-password">Password</label>
-                <input type="password" id="signup-password" placeholder="Create a password" />
-                <p id="signup-error" class="auth-error"></p>
-                <button onclick="handleSignUp()" class="btn-auth">Create Account</button>
-            </div>
-
-            <!-- Log In Panel -->
-            <div id="panel-login" class="auth-panel" style="display:none;">
-                <label for="login-name">Full Name</label>
-                <input type="text" id="login-name" placeholder="Enter your name" />
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password" placeholder="Enter your password" />
-                <p id="login-error" class="auth-error"></p>
-                <button onclick="handleLogIn()" class="btn-auth">Log In</button>
-            </div>
-
-            <p class="guest-link">
-                <a href="#" onclick="dismissAsGuest()">Continue as guest →</a>
-            </p>
-        </div>`;
-
-    document.body.appendChild(modal);
-}
-
-function switchTab(tab) {
-    const isSignup = tab === "signup";
-    document.getElementById("panel-signup").style.display = isSignup ? "flex" : "none";
-    document.getElementById("panel-login").style.display  = isSignup ? "none"  : "flex";
-    document.getElementById("tab-signup").classList.toggle("active",  isSignup);
-    document.getElementById("tab-login").classList.toggle("active",  !isSignup);
-}
-
-function handleSignUp() {
-    const name     = document.getElementById("signup-name").value.trim();
-    const email    = document.getElementById("signup-email").value.trim();
-    const password = document.getElementById("signup-password").value;
-    const errEl    = document.getElementById("signup-error");
-
-    if (!name)     { errEl.textContent = "Please enter your full name."; return; }
-    if (!email)    { errEl.textContent = "Please enter your email address."; return; }
-    if (!password) { errEl.textContent = "Please create a password."; return; }
-    if (password.length < 6) { errEl.textContent = "Password must be at least 6 characters."; return; }
-
-    errEl.textContent = "";
-    setLoggedInUser(name);
-    closeModal();
-    showWelcomeBanner(name);
-}
-
-function handleLogIn() {
-    const name     = document.getElementById("login-name").value.trim();
-    const password = document.getElementById("login-password").value;
-    const errEl    = document.getElementById("login-error");
-
-    if (!name)     { errEl.textContent = "Please enter your name."; return; }
-    if (!password) { errEl.textContent = "Please enter your password."; return; }
-
-    errEl.textContent = "";
-    setLoggedInUser(name);
-    closeModal();
-    showWelcomeBanner(name);
-}
-
-function dismissAsGuest() {
-    setLoggedInUser("Guest");
-    closeModal();
-    showWelcomeBanner("Guest");
-}
-
-function closeModal() {
-    const modal = document.getElementById("auth-modal");
-    if (modal) modal.remove();
-}
-
-
-/* SECTION 4 — FORM VALIDATION */
+/* SECTION 2 — FORM VALIDATION */
 
 function initOrderForm() {
     const form = document.getElementById("order-form");
@@ -174,7 +51,7 @@ function initOrderForm() {
 
         if (valid) {
             showConfirmation("order-form", `
-                🎉 Thank you, <strong>${firstname}</strong>! 
+                 Thank you, <strong>${firstname}</strong>! 
                 Your order has been received. We'll contact you at 
                 <strong>${email}</strong> shortly.`);
         }
@@ -237,7 +114,7 @@ function showConfirmation(formId, messageHTML) {
 }
 
 
-/* SECTION 5 — DYNAMIC CONTENT (Collections page) */
+/* SECTION 3 — DYNAMIC CONTENT (Collections page) */
 
 function toggleInfo(id) {
     const el = document.getElementById(id);
@@ -262,28 +139,11 @@ function initThemeToggle() {
         document.documentElement.style.setProperty(
             "--rose-gold-dark", isGold ? "#a8841e" : "#9c5a64"
         );
-        btn.textContent = isGold ? "🌸 Switch to Rose Gold" : "✨ Switch to Gold Theme";
+        btn.textContent = isGold ? "🌸 Switch to Rose Gold" : " Switch to Gold Theme";
     });
 }
 
-
-/* SECTION 6 — NAVBAR: show logged-in user's name */
-
-function initNavUser() {
-    const nav = document.querySelector("nav");
-    if (!nav) return;
-
-    const user = getLoggedInUser();
-    if (user && user !== "Guest") {
-        const tag = document.createElement("span");
-        tag.className = "nav-user";
-        tag.textContent = `👤 ${user}`;
-        nav.appendChild(tag);
-    }
-}
-
-
-/* SECTION 7 — ENTRY POINT */
+/* SECTION 4 — ENTRY POINT */
 
 document.addEventListener("DOMContentLoaded", function () {
     initNavUser();      // all pages — shows username in nav
