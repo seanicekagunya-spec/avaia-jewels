@@ -204,7 +204,7 @@ form textarea { resize: vertical; }
 .checkbox-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
   margin-bottom: 15px;
 }
 
