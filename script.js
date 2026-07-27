@@ -1,23 +1,30 @@
 /* AVAIA JEWELS — script.js
    External JavaScript file linked to all HTML pages.*/
 
-function getLoggedInUser() {
-    return sessionStorage.getItem("avaiaUser");
-}
-
-function setLoggedInUser(name) {
-    sessionStorage.setItem("avaiaUser", name);
-}
-
-function clearLoggedInUser() {
-    sessionStorage.removeItem("avaiaUser");
-}
 
 /* SECTION 1 — WELCOME MESSAGE (Home page) */
 
 function initHomePage() {
     const welcomeTarget = document.getElementById("welcome-message");
     if (!welcomeTarget) return; // not on the home page, do nothing
+
+    const user = getLoggedInUser();
+    if (user) {
+        showWelcomeBanner(user);
+    } else {
+        showAuthModal();
+    }
+}
+
+function showWelcomeBanner(name) {
+    const welcomeTarget = document.getElementById("welcome-message");
+    if (!welcomeTarget) return;
+    welcomeTarget.innerHTML = `
+        <div class="welcome-banner">
+            <p>✨ Welcome back, <strong>${name}</strong>! We're glad you're here.</p>
+        </div>`;
+}
+
 
 /* SECTION 2 — FORM VALIDATION */
 
@@ -51,7 +58,7 @@ function initOrderForm() {
 
         if (valid) {
             showConfirmation("order-form", `
-                 Thank you, <strong>${firstname}</strong>! 
+                🎉 Thank you, <strong>${firstname}</strong>! 
                 Your order has been received. We'll contact you at 
                 <strong>${email}</strong> shortly.`);
         }
@@ -139,9 +146,10 @@ function initThemeToggle() {
         document.documentElement.style.setProperty(
             "--rose-gold-dark", isGold ? "#a8841e" : "#9c5a64"
         );
-        btn.textContent = isGold ? "🌸 Switch to Rose Gold" : " Switch to Gold Theme";
+        btn.textContent = isGold ? "🌸 Switch to Rose Gold" : "✨ Switch to Gold Theme";
     });
 }
+
 
 /* SECTION 4 — ENTRY POINT */
 
