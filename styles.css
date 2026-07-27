@@ -357,6 +357,11 @@ footer p { color: #cfcfcf; margin: 0; }
     padding: 0.9rem 1.4rem;
     margin: 1rem 1.5rem;
 }
+.welcome-banner p {
+    margin: 0;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
 
 /* ── Form field error messages ── */
 .field-error {
