@@ -60,29 +60,36 @@
     <br>
 
     <h5>Send Us a Message</h5>
-    <form>
+   
+    <form id="contact-form">
+ 
         <label>Full name:</label><br>
-        <input type="text" name="fullname"><br>
-
+        <input type="text" id="c-fullname" name="fullname"><br>
+        <span class="field-error" id="err-fullname"></span>
+ 
         <label>Email Address:</label><br>
-        <input type="email" name="email"><br>
-
+        <input type="email" id="c-email" name="email"><br>
+        <span class="field-error" id="err-email-c"></span>
+ 
         <label>Phone Number:</label><br>
-        <input type="tel" name="phone" pattern="(0[0-9]{9}|\+254[0-9]{9}"><br>
-
+        <input type="tel" id="c-phone" name="phone" pattern="(0[0-9]{9}|\+254[0-9]{9})"><br>
+        <span class="field-error" id="err-phone-c"></span>
+ 
         <label>Your Message:</label><br>
-        <textarea name="message" rows="4" cols="30"></textarea>
-
-        <br><br>
-
+        <textarea id="c-message" name="message" rows="4" cols="30"></textarea><br>
+        <span class="field-error" id="err-message"></span>
+ 
+        <br>
+ 
         <input type="submit" value="Submit">
-
+ 
     </form>
 
     <footer>
        <p>&copy; 2026 Avaia Jewels.<br>All rights reserved.</p>
     </footer>
 
+     <script scr="script.js"></script>
     
 </body>
 </html>

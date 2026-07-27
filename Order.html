@@ -3,23 +3,22 @@
 <head>
     <title>Avaia Jewels-Order</title>
     <link rel="stylesheet" href="styles.css" />
-   
-
-</head>    
+</head>
 <body>
+
     <h1>Secure your next sparkle from us</h1>
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
+        <a href="Collections.html">Collections</a>
         <a href="Gallery.html">Gallery</a>
         <a href="Order.html">Order</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="Contact.html">Contact Us</a>
     </nav>
 
     <hr>
 
-    <h2> How to Order</h2>
+    <h2>How to Order</h2>
     <ol>
         <li>Visit our collection page.</li>
         <li>Choose your desired jewelry.</li>
@@ -31,46 +30,41 @@
 
     <hr>
 
-    <form>
+    <!--
+        id="order-form" — JavaScript uses this to find the form.
+        Each input also gets an id so JS can read its value.
+        Each <span class="field-error"> is where JS writes error messages.
+    -->
+    <form id="order-form">
+
         <label>First name:</label><br>
-        <input type="text" name="firstname"><br>
+        <input type="text" id="o-firstname" name="firstname"><br>
+        <span class="field-error" id="err-firstname"></span>
 
         <label>Last name:</label><br>
-        <input type="text" name="lastname"><br>
+        <input type="text" id="o-lastname" name="lastname"><br>
+        <span class="field-error" id="err-lastname"></span>
 
         <label>Email Address:</label><br>
-        <input type="email" name="email"><br>
+        <input type="email" id="o-email" name="email"><br>
+        <span class="field-error" id="err-email"></span>
 
         <label>Phone Number:</label><br>
-        <input type="tel" name="phone" pattern="(0[0-9]{9}|\+254[0-9]{9}"><br><br>
-
+        <input type="tel" id="o-phone" name="phone" pattern="(0[0-9]{9}|\+254[0-9]{9})"><br>
+        <span class="field-error" id="err-phone"></span>
 
         <label>Select desired jewelry:</label><br>
-         <div class="checkbox-group">
-          <input type="checkbox" id="necklaces" name="jewelry" value="necklaces">
-          <label for="Necklaces">Necklaces</label>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="rings" name="jewelry" value="rings">
-          <label for="Rings">Rings</label>
-        </div>
-       
-        <div class="checkbox-group">
-            <input type="checkbox" id="bracelets" name="jewelry" value="bracelets">
-            <label for="Bracelets">Bracelets</label>
-        </div>
-
-         <div class="checkbox-group">
-            <input type="checkbox" id="earrings" name="jewelry" value="earrings">
-            <label for="Earrings">Earrings</label>
-        </div>
-        
+        <span class="field-error" id="err-jewelry"></span><br>
+        <input type="checkbox" class="jewelry-check"> Earrings<br>
+        <input type="checkbox" class="jewelry-check"> Necklaces<br>
+        <input type="checkbox" class="jewelry-check"> Bracelets<br>
+        <input type="checkbox" class="jewelry-check"> Rings<br><br>
 
         <label>Give description of chosen jewelry:</label><br>
-        <textarea name="message" rows="4" cols="50"></textarea>
+        <textarea id="o-desc" name="message" rows="4" cols="50"></textarea><br>
+        <span class="field-error" id="err-desc"></span>
 
-        <br><br>
+        <br>
 
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
@@ -80,10 +74,11 @@
     <br>
     <hr>
 
-    <footer> Thank you for shopping with us.<br>
+    <footer>Thank you for shopping with us.<br>
         <p>&copy; 2026 Avaia Jewels.<br>All rights reserved.</p>
-    
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>

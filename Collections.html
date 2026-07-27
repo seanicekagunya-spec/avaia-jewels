@@ -3,59 +3,96 @@
 <head>
     <title>Avaia Jewels-Collections</title>
     <link rel="stylesheet" href="styles.css" />
-    
-</head> 
-<body> 
-    <h1> Our Collections</h1>
+</head>
+<body>
+
+    <h1>Our Collections</h1>
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
+        <a href="Collections.html">Collections</a>
         <a href="Gallery.html">Gallery</a>
         <a href="Order.html">Order</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="Contact.html">Contact Us</a>
     </nav>
 
     <hr>
 
+    <!--
+        THEME TOGGLE BUTTON (Dynamic Content Feature 2)
+    -->
+    <div style="text-align:center; margin: 1rem 0;">
+        <button id="theme-toggle"> Switch to Gold Theme</button>
+    </div>
+
+    <hr>
+
+    <!-- ── EARRINGS ── -->
     <h2>Earrings</h2>
-
     <img src="./images/earrings.jpg" width="250">
-
     <p>Beautiful gold hoops to elevate your style.</p>
 
+    <!--
+        LEARN MORE BUTTON (Dynamic Content Feature 1)
+    -->
+    <button data-target="info-earrings" onclick="toggleInfo('info-earrings')">Learn More ▼</button>
+    <div id="info-earrings" style="display:none;">
+        <p><strong>Materials:</strong> 18K gold, sterling silver, rose gold plated.</p>
+        <p><strong>Styles available:</strong> Hoops, studs, drops, climbers.</p>
+        <p><strong>Price range:</strong> KES 1,500 – KES 8,000.</p>
+    </div>
+
     <hr>
 
+    <!-- ── NECKLACES ── -->
     <h2>Necklaces</h2>
-
     <img src="./images/necklaces.jpg" width="250">
-
     <p>Elegant necklaces for every occasion.</p>
 
+    <button data-target="info-necklaces" onclick="toggleInfo('info-necklaces')">Learn More ▼</button>
+    <div id="info-necklaces" style="display:none;">
+        <p><strong>Materials:</strong> Gold-plated chains, freshwater pearls, sterling silver.</p>
+        <p><strong>Styles available:</strong> Pendants, layered chains, chokers, lariats.</p>
+        <p><strong>Price range:</strong> KES 2,000 – KES 12,000.</p>
+    </div>
+
     <hr>
 
+    <!-- ── BRACELETS ── -->
     <h2>Bracelets</h2>
-
     <img src="./images/bracelets.jpg" width="250">
-
     <p>Stylish bracelets crafted with care.</p>
 
+    <button data-target="info-bracelets" onclick="toggleInfo('info-bracelets')">Learn More ▼</button>
+    <div id="info-bracelets" style="display:none;">
+        <p><strong>Materials:</strong> 14K gold, sterling silver, rose gold, beaded.</p>
+        <p><strong>Styles available:</strong> Bangles, cuffs, tennis, charm bracelets.</p>
+        <p><strong>Price range:</strong> KES 1,800 – KES 15,000.</p>
+    </div>
+
     <hr>
 
+    <!-- ── RINGS ── -->
     <h2>Rings</h2>
-
     <img src="./images/rings.jpg" width="250">
-
     <p>Statement rings that say it all.</p>
+
+    <button data-target="info-rings" onclick="toggleInfo('info-rings')">Learn More ▼</button>
+    <div id="info-rings" style="display:none;">
+        <p><strong>Materials:</strong> 18K gold, white gold, rose gold, diamond-set.</p>
+        <p><strong>Styles available:</strong> Solitaire, stacking, statement, band rings.</p>
+        <p><strong>Price range:</strong> KES 2,500 – KES 40,000.</p>
+    </div>
 
     <hr>
 
     <br>
 
     <footer>
-         <p>&copy; 2026 Avaia Jewels.<br>All rights reserved.</p>
+        <p>&copy; 2026 Avaia Jewels.<br>All rights reserved.</p>
     </footer>
-</body> 
 
+    <script src="script.js"></script>
 
+</body>
 </html>
